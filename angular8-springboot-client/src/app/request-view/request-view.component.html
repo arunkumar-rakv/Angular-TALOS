@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-title>Request Parameters 
+        <a mat-raised-button color="accent" style="float: right;" [href]="requestJSONUri" [download]="fileName">Download</a>
+    </mat-card-title>
+    <mat-card-content>
+        <p>Application ID: {{ this.request.appId }}</p>
+        <p>AWS Region: {{ this.request.region }}</p>
+        <p>Environment: {{ this.request.environment }}</p>
+        <p>Application Name: {{ this.request.appName }}</p>
+        <p>AutoScaling Desired: {{ this.request.asgDesired }}</p>
+        <p>AutoScaling Maximum: {{ this.request.asgMax }}</p>
+        <p>AutoScaling Minimum: {{ this.request.asgMin }}</p>    
+    </mat-card-content>
+</mat-card>

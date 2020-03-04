@@ -1,0 +1,77 @@
+<div class="mat-elevation-z4">
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Application Details</ng-template>
+        <div>
+        <mat-form-field>
+            <mat-label>Application ID</mat-label>
+            <input matInput placeholder="Application ID" formControlName="appId" required>
+        </mat-form-field>
+        </div>
+        <div>
+        <mat-form-field>
+            <mat-label>AWS Region</mat-label>
+            <input matInput placeholder="us-east-1/us-west-2" formControlName="region" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Environment</mat-label>
+            <input matInput placeholder="prd, dev, qa" formControlName="environment" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Application Name</mat-label>
+            <input matInput placeholder="Stack Name" formControlName="appName" required>
+        </mat-form-field>
+    </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>ASG Details</ng-template>
+        <div>
+            <mat-form-field>
+                <mat-label>AutoScaling Desired</mat-label>
+                <input matInput formControlName="asgDesired" placeholder="" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>AutoScaling Maximum</mat-label>
+                <input matInput formControlName="asgMax" placeholder="" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>AutoScaling Minimum</mat-label>
+                <input matInput formControlName="asgMin" placeholder="" required>
+            </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Preview</ng-template>
+      <p>Application ID: {{ this.firstFormGroup.get('appId').value }}</p>
+      <p>AWS Region: {{ this.firstFormGroup.get('region').value }}</p>
+      <p>Environment: {{ this.firstFormGroup.get('environment').value }}</p>
+      <p>Application Name: {{ this.firstFormGroup.get('appName').value }}</p>
+      <p>AutoScaling Desired: {{ this.secondFormGroup.get('asgDesired').value }}</p>
+      <p>AutoScaling Maximum: {{ this.secondFormGroup.get('asgMax').value }}</p>
+      <p>AutoScaling Minimum: {{ this.secondFormGroup.get('asgMin').value }}</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onSubmit()">Submit</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  </div>
