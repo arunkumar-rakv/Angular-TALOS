@@ -91,7 +91,7 @@ public class EmployeeController {
 	@PostMapping("/createRequest")
 	public AppRequest createRequest(@Valid @RequestBody AppRequest appRequest) throws JsonProcessingException {
 		AppRequest appRequestFinal = appRequestRepository.save(appRequest);
-		AWSCredentials credentials = new BasicAWSCredentials("AKIAUMW6H7SLAYA7AKFG", "utM6JkL82f/ZMn/Gt7y4F2tZA7gyW1XDX/uTVfpc");
+		AWSCredentials credentials = new BasicAWSCredentials("accessKeyID", "accessKey");
 		AmazonS3 s3client = AmazonS3ClientBuilder
 				  .standard()
 				  .withCredentials(new AWSStaticCredentialsProvider(credentials))
